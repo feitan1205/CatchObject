@@ -23,8 +23,16 @@ public:
 	// 表示色の設定
 	void setColor(int color) { m_color = color; }
 
+	//つかめるかどうか
+	bool isCatchEnable(Vec2 pos);
+
+	bool getisCatch() { return m_isCatch; }
+
 private:
 	SceneTest* m_pSceneTest;
 	// 表示情報
 	int		m_color;
+
+	bool m_isCatch;			//つかんだかどうかフラグ
+	Vec2 m_catchOffset;		//つかんだ一から中心へのベクトル
 };

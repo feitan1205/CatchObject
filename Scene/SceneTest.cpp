@@ -5,6 +5,12 @@
 
 namespace
 {
+	constexpr int kObjectNum = 4;
+}
+
+SceneTest::SceneTest() :
+	m_circle(kObjectNum)
+{
 }
 
 void SceneTest::init()
@@ -31,10 +37,31 @@ void SceneTest::end()
 
 SceneBase* SceneTest::update()
 {
-	for (auto& obj : m_circle)
+
+	/*for (int i = (m_circle.size()) - 1;i >= 0;i--)
 	{
-		obj.update();
+		if(i < (m_circle.size()) - 1){
+			if (m_circle[i + 1].getisCatch())break;
+		}
+		m_circle[i].update();
+	}*/
+
+	for (int i = 0; i < m_circle.size(); i++) {
+		bool isCatchother = false;
+		for (int j = 0; j < m_circle.size(); j++) {
+			if (i == j)	continue;
+
+			if (m_circle[j].getisCatch()) {
+				isCatchother = true;
+			}
+		}
+
+		if (!isCatchother) {
+			m_circle[i].update();
+		}
 	}
+
+
 	return this;
 }
 

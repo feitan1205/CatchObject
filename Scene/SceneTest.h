@@ -1,14 +1,12 @@
 #pragma once
 #include "SceneBase.h"
-
+#include <vector>
 #include "ObjectCircle.h"
 
 class SceneTest : public SceneBase
 {
 public:
-	SceneTest() 
-	{
-	}
+	SceneTest();
 	virtual ~SceneTest() {}
 
 
@@ -19,7 +17,9 @@ public:
 	virtual void draw() override;
 
 private:
-	static const int kObjectNum = 4;
-private:
-	ObjectCircle	m_circle[kObjectNum];
+
+	std::vector<ObjectCircle> m_circle;
+
+	//bool m_isCatch;
+
 };
